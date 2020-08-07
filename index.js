@@ -1,12 +1,23 @@
 const express = require('express')
 const app = express()
 
+const morgan = require('morgan');
+const cors = require('cors');
+
 const { config } = require('./config/index')
+
 const moviesApi = require('./routes/movies')
 
 const { logErrors, errorHandler, wrapError } = require('./utils/middleware/errorHandlers')
 const notFoundHandler = require('./utils/middleware/notFoundHandler')
-// parse application/json
+
+//Cors
+app.use(cors());
+
+//Morgan Http Logger
+app.use(morgan('dev'));
+
+//Body parser
 app.use(express.json())
 
 moviesApi(app)
