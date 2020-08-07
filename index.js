@@ -3,6 +3,7 @@ const app = express()
 
 const morgan = require('morgan');
 const cors = require('cors');
+const helmet = require("helmet");
 
 const { config } = require('./config/index')
 
@@ -16,6 +17,9 @@ app.use(cors());
 
 //Morgan Http Logger
 app.use(morgan('dev'));
+
+//Helmet - SECURITY
+app.use(helmet());
 
 //Body parser
 app.use(express.json())
