@@ -26,6 +26,11 @@ class MoviesService {
         const deletedMovieId = await Promise.resolve(moviesMock[0].id)
         return deletedMovieId
     }
+    
+    async patchMovie() {
+        const patchMovieId = await Promise.resolve(moviesMock[0].id);
+        return patchMovieId;
+    }
 }
 
 module.exports = MoviesService;
