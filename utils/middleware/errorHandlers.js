@@ -11,12 +11,13 @@ function withErrorStack(error, stack) {
 }
 
 function logErrors(err, req, res, next) {
+    // eslint-disable-next-line no-console
     console.log(err)
     next(err)
 }
 
 function wrapError(err, req, res, next) {
-    if(!err.isBoom()) {
+    if(!err.isBoom) {
         next(boom.badImplementation(err))
     }
     next(err)
