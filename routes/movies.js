@@ -1,7 +1,6 @@
 const express = require('express');
 const CRUDService = require('../services/crud')
 
-
 function moviesApi(app) {
 
     const router = express.Router();
@@ -25,7 +24,7 @@ function moviesApi(app) {
     router.get('/:movieId', async function (req, res, next) {
         const { movieId } = req.params;
         try {
-            const movies = await moviesService.getDataById({ movieId });
+            const movies = await moviesService.getDataById(movieId);
 
             res.status(200).json({
                 data: movies,
@@ -38,7 +37,7 @@ function moviesApi(app) {
     router.post('/', async function (req, res, next) {
         const { body: movie } = req
         try {
-            const createMovieId = await moviesService.createData({ movie });
+            const createMovieId = await moviesService.createData(movie);
 
             res.status(201).json({
                 data: createMovieId,
@@ -52,7 +51,7 @@ function moviesApi(app) {
         const { movieId } = req.params;
         const { body: movie } = req
         try {
-            const updatedMovieId = await moviesService.updateDataById({ movieId, movie });
+            const updatedMovieId = await moviesService.updateDataById( movieId, movie );
 
             res.status(200).json({
                 data: updatedMovieId,
@@ -65,7 +64,7 @@ function moviesApi(app) {
     router.delete('/:movieId', async function (req, res, next) {
         const { movieId } = req.params;
         try {
-            const deletedMovieId = await moviesService.deleteDataById({ movieId });
+            const deletedMovieId = await moviesService.deleteDataById(movieId);
 
             res.status(200).json({
                 data: deletedMovieId,
