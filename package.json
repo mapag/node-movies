@@ -8,7 +8,8 @@
     "start": "SET NODE_ENV=production & node index",
     "test": "set NODE_ENV=development && mocha --exit",
     "cover": "nyc npm run test",
-    "report": "nyc report --reporter=html && start coverage/index.html"
+    "report": "nyc report --reporter=html && start coverage/index.html",
+    "inspect": "set DEBUG=express:*,app:* && set NODE_ENV=development && nodemon --inspect index"
   },
   "keywords": [],
   "author": "",
