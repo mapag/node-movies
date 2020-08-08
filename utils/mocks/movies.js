@@ -158,11 +158,11 @@ function filteredMoviesMock(tag) {
 }
 
 class MoviesServiceMock {
-    async getDataByTags(){
+    async getMovies(){
         return Promise.resolve(moviesMock)
     }
 
-    async createData() {
+    async createMovie() {
         return Promise.resolve(moviesMock[0])
     }
 }

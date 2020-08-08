@@ -7,14 +7,15 @@ class ServicesCRUD {
   }
 
   async getDataByTags({ tags }) {
+    console.log(tags)
     const query = tags && { tags: { $in: tags } };
     const data = await this.mongoDB.getAll(this.collection, query);
     return data || [];
   }
 
-  async getDataById( ID ) {
-    const data = await this.mongoDB.get(this.collection, ID);
-    return data || [];
+  async getDataById({ movieId }) {
+    const data = await this.mongoDB.get(this.collection, movieId);
+    return data || {};
   }
 
   async createData( data ) {
