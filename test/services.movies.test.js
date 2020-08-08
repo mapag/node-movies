@@ -4,8 +4,6 @@ const proxyquire = require('proxyquire')
 const { MongoLibMock, createStub, getAllStub } = require('../utils/mocks/mongoLib')
 
 const { moviesMock, filteredMoviesMock } = require('../utils/mocks/movies')
-const movies = require('../utils/mocks/movies')
-const { get } = require('https')
 
 describe("services - movies", function () {
 
