@@ -43,13 +43,9 @@ function moviesApi(app) {
       next(err);
     }
   }
-);
+  );
 
-  router.post('/', validationHandler(createMovieSchema), async function (
-    req,
-    res,
-    next
-  ) {
+  router.post('/', validationHandler(createMovieSchema), async function (req, res, next) {
     const { body: movie } = req;
     try {
       const createdMovieId = await moviesService.createMovie({ movie });

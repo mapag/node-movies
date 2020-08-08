@@ -31,7 +31,13 @@ describe("services - movies", function () {
             const expected = filteredMoviesMock("Drama")
             assert.deepEqual(result, expected)
         })
+    })
 
+    describe("when createMovie method is called", async function () {
+        it('should call the create MongoLib method', async function () {
+            await moviesService.createMovie(moviesMock[0]);
+            assert.strictEqual(createStub.called, true)
+        })
         it('should return the id of the movie created', async function () {
             const result = await moviesService.createMovie(moviesMock[0])
             const expected = moviesMock[0].id

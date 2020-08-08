@@ -25,4 +25,20 @@ describe('routes - movies', function () {
             })
         })
     })
+
+    describe('POST /movies', function () {
+        it('should respond with status 201', function (done) {
+            request.post('/api/movies').expect(201, done)
+        })
+
+        it('should respond with the id of the movie created', function(done) {
+            request.post('/api/movies').end((err, res) => {
+                assert.deepStrictEqual(res.body, {
+                    data: moviesMock[0].id,
+                    message: 'movie created'
+                })
+                done();
+            })
+        })
+    })
 })
