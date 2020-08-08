@@ -3,7 +3,7 @@ const proxyquire = require('proxyquire')
 
 const { MongoLibMock, createStub, getAllStub } = require('../utils/mocks/mongoLib')
 
-const { moviesMock } = require('../utils/mocks/movies')
+const { moviesMock, filteredMoviesMock } = require('../utils/mocks/movies')
 const movies = require('../utils/mocks/movies')
 const { get } = require('https')
 
@@ -27,8 +27,8 @@ describe("services - movies", function () {
         })
 
         it('should return an array of movies filtered by tag "DRAMA" ', async function () {
-            const result = await moviesService.getMovies({})
-            const expected = moviesMock
+            const result = await moviesService.getMovies({ tags: ["Drama"] })
+            const expected = filteredMoviesMock("Drama")
             assert.deepEqual(result, expected)
         })
 

@@ -15,7 +15,7 @@ class MongoLibMock {
         return getAllStub(collection, query)
     }
     create(collection, data) {
-        return this.createStub(collection, data)
+        return createStub(collection, data)
     }
 }
 
